@@ -11,5 +11,5 @@ import UIKit
 
 extension UIColor {
     public static let grayMarvel = UIColor.gray
-    public static let redMarvel = UIColor(red: 219/255, green: 56/255, blue: 49/255, alpha: 1.0)
+    public static let redMarvel = UIColor(red: 235/255, green: 64/255, blue: 53/255, alpha: 1.0)
 }

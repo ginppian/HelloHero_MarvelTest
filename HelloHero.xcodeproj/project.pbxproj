@@ -42,6 +42,7 @@
 		BB62CCF122B979D500FAB999 /* MarvelDetail_Description_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62CCF022B979D500FAB999 /* MarvelDetail_Description_Cell.swift */; };
 		BB62CCF322B97D8900FAB999 /* MarvelDetail_Thumbnail_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62CCF222B97D8900FAB999 /* MarvelDetail_Thumbnail_Cell.swift */; };
 		BB62CCF622B9877100FAB999 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62CCF522B9877100FAB999 /* Random.swift */; };
+		BB62CCF822B9982800FAB999 /* Marvel-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB62CCF722B9962B00FAB999 /* Marvel-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		BB62CCF022B979D500FAB999 /* MarvelDetail_Description_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDetail_Description_Cell.swift; sourceTree = "<group>"; };
 		BB62CCF222B97D8900FAB999 /* MarvelDetail_Thumbnail_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDetail_Thumbnail_Cell.swift; sourceTree = "<group>"; };
 		BB62CCF522B9877100FAB999 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		BB62CCF722B9962B00FAB999 /* Marvel-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marvel-Regular.ttf"; sourceTree = "<group>"; };
 		EBC2F195CA2C765A8CECD107 /* Pods-HelloHero.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloHero.release.xcconfig"; path = "Pods/Target Support Files/Pods-HelloHero/Pods-HelloHero.release.xcconfig"; sourceTree = "<group>"; };
 		F9EAB97941202FEBFE5E062B /* Pods_HelloHero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloHero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD2466B93E1EE3C3399CCBFA /* Pods_HelloHeroUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloHeroUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +199,7 @@
 				BB236F7822B89B58000C92BF /* Assets.xcassets */,
 				BB236F7A22B89B58000C92BF /* LaunchScreen.storyboard */,
 				BB236F7D22B89B58000C92BF /* Info.plist */,
+				BB62CCF722B9962B00FAB999 /* Marvel-Regular.ttf */,
 			);
 			path = HelloHero;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB62CCF822B9982800FAB999 /* Marvel-Regular.ttf in Resources */,
 				BB236F7C22B89B58000C92BF /* LaunchScreen.storyboard in Resources */,
 				BB236F7922B89B58000C92BF /* Assets.xcassets in Resources */,
 				BB236FBE22B8C0A5000C92BF /* characters.json in Resources */,

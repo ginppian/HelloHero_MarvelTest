@@ -32,7 +32,7 @@ extension MarvelCell {
     func setupLbl() {
         constrainLbl()
         self.lbl.text = self.character.Name
-        self.lbl.backgroundColor = UIColor.red
+        self.lbl.backgroundColor = UIColor.redMarvel
     }
     func constrainLbl() {
         self.contentView.addSubview(self.lbl)
@@ -156,6 +156,7 @@ class HomeController: UIViewController {
         let ai = UIActivityIndicatorView(style: .gray)
         return ai
     }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -163,10 +164,10 @@ class HomeController: UIViewController {
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationItem.largeTitleDisplayMode = .never
-        
+
         let serviceMarvel = ReadJson.from(file: "characters")
         self.config = serviceMarvel.Data
-        
+
         self.setupUI()
 
     }
@@ -174,14 +175,25 @@ class HomeController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.barTintColor = UIColor.red
-//        self.navigationController?.navigationBar.tintColor = UIColor.blue
-//        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blue]
-        UINavigationBar.appearance().largeTitleTextAttributes =
-            [NSAttributedString.Key.foregroundColor: UIColor.green]
-        UINavigationBar.appearance().largeTitleTextAttributes =
-            [NSAttributedString.Key.foregroundColor:UIColor.blue,
-             NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 22)]
-        self.title = "Marvel Characters"
+        
+//        let attributes: [NSAttributedString.Key: Any] = [
+//            NSAttributedString.Key.font = UIFont(name: "Marvel-Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
+//        ]
+//        self.navigationController?.navigationBar.titleTextAttributes = attributes
+//
+//        self.title = "MARVEL"
+        
+        
+        let navigationFont = UIFont(name: "Marvel-Regular", size: 34)
+        let navigationLargeFont = UIFont(name: "Marvel-Regular", size: 89) //34 is Large Title size by default
+        
+        //navigation.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: navigationFont!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: navigationFont!]
+
+        if #available(iOS 11, *){
+            self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: navigationLargeFont!]
+        }
+        self.title = "MARVEL"
     }
 
 }

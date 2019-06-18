@@ -43,6 +43,7 @@
 		BB62CCF322B97D8900FAB999 /* MarvelDetail_Thumbnail_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62CCF222B97D8900FAB999 /* MarvelDetail_Thumbnail_Cell.swift */; };
 		BB62CCF622B9877100FAB999 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62CCF522B9877100FAB999 /* Random.swift */; };
 		BB62CCF822B9982800FAB999 /* Marvel-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB62CCF722B9962B00FAB999 /* Marvel-Regular.ttf */; };
+		BB62CCFB22B9A22B00FAB999 /* MarvelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62CCFA22B9A22B00FAB999 /* MarvelCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		BB62CCF222B97D8900FAB999 /* MarvelDetail_Thumbnail_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDetail_Thumbnail_Cell.swift; sourceTree = "<group>"; };
 		BB62CCF522B9877100FAB999 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		BB62CCF722B9962B00FAB999 /* Marvel-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marvel-Regular.ttf"; sourceTree = "<group>"; };
+		BB62CCFA22B9A22B00FAB999 /* MarvelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCell.swift; sourceTree = "<group>"; };
 		EBC2F195CA2C765A8CECD107 /* Pods-HelloHero.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloHero.release.xcconfig"; path = "Pods/Target Support Files/Pods-HelloHero/Pods-HelloHero.release.xcconfig"; sourceTree = "<group>"; };
 		F9EAB97941202FEBFE5E062B /* Pods_HelloHero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloHero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD2466B93E1EE3C3399CCBFA /* Pods_HelloHeroUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloHeroUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				BB236F7322B89B55000C92BF /* HomeController.swift */,
+				BB62CCF922B9A21C00FAB999 /* MarvelCell */,
 				BB62CCDE22B95C1700FAB999 /* Detail */,
 			);
 			path = View;
@@ -305,6 +308,14 @@
 				BB62CCF522B9877100FAB999 /* Random.swift */,
 			);
 			path = ModelView;
+			sourceTree = "<group>";
+		};
+		BB62CCF922B9A21C00FAB999 /* MarvelCell */ = {
+			isa = PBXGroup;
+			children = (
+				BB62CCFA22B9A22B00FAB999 /* MarvelCell.swift */,
+			);
+			path = MarvelCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -540,6 +551,7 @@
 				BB236FA922B8A92A000C92BF /* MarvelComicItem.swift in Sources */,
 				BB236FA522B8A4DF000C92BF /* MarvelThumbnail.swift in Sources */,
 				BB62CCE122B95C2D00FAB999 /* MarvelDetail_ComicItemCell.swift in Sources */,
+				BB62CCFB22B9A22B00FAB999 /* MarvelCell.swift in Sources */,
 				BB62CCF122B979D500FAB999 /* MarvelDetail_Description_Cell.swift in Sources */,
 				BB62CCEE22B9771B00FAB999 /* MarvelDetail_ReadMore_ItemCell.swift in Sources */,
 				BB236FA322B8A02B000C92BF /* MarvelCharacter.swift in Sources */,

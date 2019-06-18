@@ -1,0 +1,6 @@
+framework module Pods_HelloHero {
+  umbrella header "Pods-HelloHero-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -8,6 +8,14 @@
 
 import UIKit
 
+//extension UIApplication {
+//    
+//    var statusBarView: UIView? {
+//        return value(forKey: "statusBar") as? UIView
+//    }
+//    
+//}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,7 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let rootVC = HomeController()
+        let navC = UINavigationController(rootViewController: rootVC)
+        window!.rootViewController = navC
+        window!.makeKeyAndVisible()
+        //UIApplication.shared.statusBarView?.backgroundColor = UIColor.green
+
         return true
     }
 

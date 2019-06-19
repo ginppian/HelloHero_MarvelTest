@@ -6,7 +6,7 @@ Hello Heroes Marvel Test App
 Aplicación de prueba usando el  <a href="https://developer.marvel.com">API de Marvel</a>.
 
 <p align="center">
-    <img src="imgs/marvelApp.png">
+    <img src="imgs/marvelApp.png" width="281" height="609">
 </p>
 
 

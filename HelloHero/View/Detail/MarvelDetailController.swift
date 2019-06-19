@@ -22,13 +22,26 @@ extension MarvelDetailController: UITableViewDataSource {
         case MarvelDetailEnum.description.rawValue:
             return 1
         case MarvelDetailEnum.comics.rawValue:
+            if self.character.Comics.Items.isEmpty {
+                return 1
+            }
             return self.character.Comics.Items.count
         case MarvelDetailEnum.series.rawValue:
+            if self.character.Series.Items.isEmpty {
+                return 1
+            }
             return self.character.Series.Items.count
         case MarvelDetailEnum.stories.rawValue:
+            if self.character.Stories.Items.isEmpty {
+                return 1
+            }
             return self.character.Stories.Items.count
         case MarvelDetailEnum.events.rawValue:
-            return self.character.Events.Items.count
+            if self.character.Events.Items.isEmpty {
+                return 1
+            } else {
+                return self.character.Events.Items.count
+            }
         case MarvelDetailEnum.readMore.rawValue:
             return self.character.Urls.count
         default:
@@ -72,6 +85,7 @@ extension MarvelDetailController: UITableViewDataSource {
                                                         for: indexPath) as? MarvelDetail_Description_Cell {
                 self.marvelDetail_Description_CellDelegate = cell
                 self.marvelDetail_Description_CellDelegate?.marvelDetail_Description_CellDelegate(_description: self.character.Description)
+                
                 return cell
             }
             return UITableViewCell()
@@ -79,16 +93,28 @@ extension MarvelDetailController: UITableViewDataSource {
             if let cell = tableView.dequeueReusableCell(withIdentifier: MarvelDetail_ComicItemCell.identifier,
                                                         for: indexPath) as? MarvelDetail_ComicItemCell {
                 
-                self.marvelDetail_ComicCell_ReloadDelegate = cell
-                self.marvelDetail_ComicCell_ReloadDelegate?.marvelDetail_ComicCell_Reload(comicItem: self.character.Comics.Items[indexPath.row])
+                if self.character.Comics.Items.isEmpty {
+                    self.marvelDetail_ComicCell_ReloadDelegate = cell
+                    self.marvelDetail_ComicCell_ReloadDelegate?.marvelDetail_ComicCell_Reload(comicItem: MarvelComicItem())
+                } else {
+                    self.marvelDetail_ComicCell_ReloadDelegate = cell
+                    self.marvelDetail_ComicCell_ReloadDelegate?.marvelDetail_ComicCell_Reload(comicItem: self.character.Comics.Items[indexPath.row])
+                }
+
                 return cell
             }
             return UITableViewCell()
         case MarvelDetailEnum.series.rawValue:
             if let cell = tableView.dequeueReusableCell(withIdentifier: MarvelDetail_SeriesItemCell.identifier,
                                                         for: indexPath) as? MarvelDetail_SeriesItemCell {
-                self.marvelDetail_SeriesCell_ReloadDelegate = cell
-                self.marvelDetail_SeriesCell_ReloadDelegate?.marvelDetail_SeriesCell_Reload(serieItem: self.character.Series.Items[indexPath.row])
+                if self.character.Series.Items.isEmpty {
+                    self.marvelDetail_SeriesCell_ReloadDelegate = cell
+                    self.marvelDetail_SeriesCell_ReloadDelegate?.marvelDetail_SeriesCell_Reload(serieItem: MarvelSerieItem())
+                } else {
+                    self.marvelDetail_SeriesCell_ReloadDelegate = cell
+                    self.marvelDetail_SeriesCell_ReloadDelegate?.marvelDetail_SeriesCell_Reload(serieItem: self.character.Series.Items[indexPath.row])
+                }
+
                 return cell
             }
             return UITableViewCell()
@@ -96,16 +122,28 @@ extension MarvelDetailController: UITableViewDataSource {
             if let cell = tableView.dequeueReusableCell(withIdentifier: MarvelDetail_StoriesItemCell.identifier,
                                                         for: indexPath) as? MarvelDetail_StoriesItemCell {
                 
-                self.marvelDetail_StorieCell_ReloadDelegate = cell
-                self.marvelDetail_StorieCell_ReloadDelegate?.marvelDetail_StorieCell_Reload(storieItem: self.character.Stories.Items[indexPath.row])
+                if self.character.Stories.Items.isEmpty {
+                    self.marvelDetail_StorieCell_ReloadDelegate = cell
+                    self.marvelDetail_StorieCell_ReloadDelegate?.marvelDetail_StorieCell_Reload(storieItem: MarvelStorieItem())
+                } else {
+                    self.marvelDetail_StorieCell_ReloadDelegate = cell
+                    self.marvelDetail_StorieCell_ReloadDelegate?.marvelDetail_StorieCell_Reload(storieItem: self.character.Stories.Items[indexPath.row])
+                }
+                
                 return cell
             }
             return UITableViewCell()
         case MarvelDetailEnum.events.rawValue:
             if let cell = tableView.dequeueReusableCell(withIdentifier: MarvelDetail_EventsItemCell.identifier,
                                                         for: indexPath) as? MarvelDetail_EventsItemCell {
-                self.marvelDetail_EventsCell_ReloadDelegate = cell
-                self.marvelDetail_EventsCell_ReloadDelegate?.marvelDetail_EventsCell_Reload(eventItem: self.character.Events.Items[indexPath.row])
+                
+                if self.character.Events.Items.isEmpty {
+                    self.marvelDetail_EventsCell_ReloadDelegate = cell
+                    self.marvelDetail_EventsCell_ReloadDelegate?.marvelDetail_EventsCell_Reload(eventItem: MarvelEventItem())
+                } else {
+                    self.marvelDetail_EventsCell_ReloadDelegate = cell
+                    self.marvelDetail_EventsCell_ReloadDelegate?.marvelDetail_EventsCell_Reload(eventItem: self.character.Events.Items[indexPath.row])
+                }
                 return cell
             }
             return UITableViewCell()
@@ -129,23 +167,50 @@ extension MarvelDetailController: UITableViewDelegate {
         case MarvelDetailEnum.thumbnail.rawValue:
             return MarvelDetail_Thumbnail_Cell.height
         case MarvelDetailEnum.description.rawValue:
-            return MarvelDetail_Description_Cell.height
+//            return MarvelDetail_Description_Cell.height
+            return UITableView.automaticDimension
         case MarvelDetailEnum.comics.rawValue:
             return MarvelDetail_ComicItemCell.height
+//            return UITableView.automaticDimension
         case MarvelDetailEnum.series.rawValue:
             return MarvelDetail_SeriesItemCell.height
+//            return UITableView.automaticDimension
         case MarvelDetailEnum.stories.rawValue:
             return MarvelDetail_StoriesItemCell.height
+//            return UITableView.automaticDimension
         case MarvelDetailEnum.events.rawValue:
             return MarvelDetail_EventsItemCell.height
+//            return UITableView.automaticDimension
         case MarvelDetailEnum.readMore.rawValue:
             return MarvelDetail_ReadMore_ItemCell.height
+//            return UITableView.automaticDimension
         default:
             return CGFloat()
         }
     }
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.section {
+        case MarvelDetailEnum.thumbnail.rawValue:
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        case MarvelDetailEnum.description.rawValue:
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        case MarvelDetailEnum.comics.rawValue:
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        case MarvelDetailEnum.series.rawValue:
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        case MarvelDetailEnum.stories.rawValue:
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        case MarvelDetailEnum.events.rawValue:
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        case MarvelDetailEnum.readMore.rawValue:
+            self.tableView.deselectRow(at: indexPath, animated: true)
+            
+            let urlStr = self.character.Urls[indexPath.row].Url
+            guard let url = URL(string: urlStr) else { return }
+            UIApplication.shared.open(url)
+        default:
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
 }
 extension MarvelDetailController {
@@ -155,6 +220,7 @@ extension MarvelDetailController {
     }
     func setupView() {
         self.view.backgroundColor = .white
+        self.navigationController?.navigationBar.tintColor = UIColor.black
     }
     func setupTableView() {
         
@@ -173,10 +239,17 @@ extension MarvelDetailController {
     }
     func constrainTableView() {
         self.view.addSubview(self.tableView)
-        self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0.0).isActive = true
-        self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0.0).isActive = true
-        self.tableView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 0.0).isActive = true
-        self.tableView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: 0.0).isActive = true
+        if #available(iOS 11.0, *) {
+            self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0.0).isActive = true
+            self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0.0).isActive = true
+            self.tableView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 0.0).isActive = true
+            self.tableView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: 0.0).isActive = true
+        } else {
+            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0.0).isActive = true
+            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0.0).isActive = true
+            self.tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0.0).isActive = true
+            self.tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0.0).isActive = true
+        }
     }
 }
 
@@ -188,7 +261,7 @@ public class MarvelDetailController: UIViewController {
         t.backgroundColor = UIColor.grayMarvel
         t.showsVerticalScrollIndicator = false
         t.showsHorizontalScrollIndicator = false
-        t.bounces = true
+        t.bounces = false
         return t
     }()
     

@@ -15,13 +15,18 @@ extension MarvelDetail_ReadMore_ItemCell {
     }
     func setupLbl() {
         constrainLbl()
-        self.lbl.text = self.marvelUrl.Url
+        self.lbl.font = UIFont.italicSystemFont(ofSize: 11.0)
+        self.lbl.textColor = UIView().tintColor
+        self.lbl.attributedText = NSAttributedString(string: self.marvelUrl.Url, attributes:
+            [.underlineStyle: NSUnderlineStyle.single.rawValue, .underlineColor: UIView().tintColor])
     }
     func constrainLbl() {
         self.contentView.addSubview(self.lbl)
-        self.lbl.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 0.0).isActive = true
-        self.lbl.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: 0.0).isActive = true
-        self.lbl.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: 0.0).isActive = true
+        self.lbl.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 8.0).isActive = true
+        self.lbl.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -8.0).isActive = true
+        //self.lbl.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: 0.0).isActive = true
+        self.lbl.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0.0).isActive = true
+        self.lbl.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 0.0).isActive = true
     }
 }
 
@@ -37,7 +42,7 @@ protocol MarvelDetail_ReadMoreCell_ReloadDelegate {
 }
 public class MarvelDetail_ReadMore_ItemCell: UITableViewCell {
     
-    public static let height = CGFloat(21.0)
+    public static let height = CGFloat(44.0)
     public static let identifier = "MarvelDetail_ReadMore_ItemCell"
     
     var marvelUrl = MarvelURL()

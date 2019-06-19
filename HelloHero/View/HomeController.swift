@@ -51,7 +51,6 @@ extension HomeController {
         //self.tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0);
 
         //self.tableView.contentInsetAdjustmentBehavior = .never
-
         
         self.tableView.register(MarvelCell.self, forCellReuseIdentifier: MarvelCell.identifier)
         self.tableView.dataSource = self
@@ -59,10 +58,18 @@ extension HomeController {
     }
     func constrainTableView() {
         self.view.addSubview(self.tableView)
-        self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0.0).isActive = true
-        self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0.0).isActive = true
-        self.tableView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 0.0).isActive = true
-        self.tableView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: 0.0).isActive = true
+
+        if #available(iOS 11.0, *) {
+            self.tableView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: 0.0).isActive = true
+            self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0.0).isActive = true
+            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0.0).isActive = true
+            self.tableView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 0.0).isActive = true
+        } else {
+            self.tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0.0).isActive = true
+            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0.0).isActive = true
+            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0.0).isActive = true
+            self.tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0.0).isActive = true
+        }
     }
 }
 
@@ -85,7 +92,7 @@ class HomeController: UIViewController {
     var activity: UIActivityIndicatorView = {
         let ai = UIActivityIndicatorView(style: .whiteLarge)
         ai.translatesAutoresizingMaskIntoConstraints = false
-        ai.backgroundColor = .orange
+        //ai.backgroundColor = .orange
         return ai
     }()
 

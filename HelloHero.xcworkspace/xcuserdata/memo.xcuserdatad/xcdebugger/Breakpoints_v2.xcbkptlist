@@ -6,15 +6,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HelloHero/View/HomeController.swift"
-            timestampString = "582605388.462281"
+            filePath = "HelloHero/View/Detail/MarvelDetailController.swift"
+            timestampString = "582617374.241551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -22,49 +22,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HelloHero/ModelView/Service/MarverServices.swift"
-            timestampString = "582601928.751689"
+            filePath = "HelloHero/View/Detail/MarvelDetailController.swift"
+            timestampString = "582617374.241645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "characterList(_:_:completion:)"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static HelloHero.MarvelServices.characterList(_: Swift.Int, _: Swift.Int, completion: (Swift.Optional&lt;HelloHero.MarvelCharacterData&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "HelloHero"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/memo/Documents/HelloHero/HelloHero/ModelView/Service/MarverServices.swift"
-                  timestampString = "582603336.369318"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "1798">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.String, Swift.Optional&lt;__C.NSDictionary&gt;) -&gt; () in static HelloHero.MarvelServices.characterList(_: Swift.Int, _: Swift.Int, completion: (Swift.Optional&lt;HelloHero.MarvelCharacterData&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "HelloHero"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/memo/Documents/HelloHero/HelloHero/ModelView/Service/MarverServices.swift"
-                  timestampString = "582603336.381182"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "49">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HelloHero/View/Detail/MarvelDetailController.swift"
+            timestampString = "582617374.241719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HelloHero/View/Detail/MarvelDetailController.swift"
+            timestampString = "582617374.241778"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

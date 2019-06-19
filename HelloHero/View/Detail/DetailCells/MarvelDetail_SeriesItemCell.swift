@@ -15,12 +15,18 @@ extension MarvelDetail_SeriesItemCell {
     }
     func setupLbl() {
         constrainLbl()
-        self.lbl.text = self.serieItem.Name
+        if self.serieItem.Name.isEmpty {
+            self.lbl.text = "   No se encontraron datos."
+            self.lbl.textColor = UIColor.darkGray
+            self.lbl.font = UIFont.italicSystemFont(ofSize: 15.0)
+        } else {
+            self.lbl.text = "• \(self.serieItem.Name)"
+        }
     }
     func constrainLbl() {
         self.contentView.addSubview(self.lbl)
-        self.lbl.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 0.0).isActive = true
-        self.lbl.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: 0.0).isActive = true
+        self.lbl.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 8.0).isActive = true
+        self.lbl.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -8.0).isActive = true
         self.lbl.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: 0.0).isActive = true
     }
 }
@@ -37,7 +43,7 @@ protocol MarvelDetail_SeriesCell_ReloadDelegate {
 public class MarvelDetail_SeriesItemCell: UITableViewCell {
     
     public static let identifier = "MarvelDetail_SeriesItemCell"
-    public static let height = CGFloat(21.0)
+    public static let height = CGFloat(23.0)
     
     var serieItem = MarvelSerieItem()
     
@@ -52,6 +58,8 @@ public class MarvelDetail_SeriesItemCell: UITableViewCell {
     
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.selectionStyle = .none
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init (coder:) has not been implemented")

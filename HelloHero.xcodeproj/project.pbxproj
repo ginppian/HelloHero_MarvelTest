@@ -44,6 +44,13 @@
 		BB62CCF622B9877100FAB999 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62CCF522B9877100FAB999 /* Random.swift */; };
 		BB62CCF822B9982800FAB999 /* Marvel-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB62CCF722B9962B00FAB999 /* Marvel-Regular.ttf */; };
 		BB62CCFB22B9A22B00FAB999 /* MarvelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62CCFA22B9A22B00FAB999 /* MarvelCell.swift */; };
+		BB62CD0A22B9AA4700FAB999 /* DGSubmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62CD0222B9AA4700FAB999 /* DGSubmit.swift */; };
+		BB62CD0B22B9AA4700FAB999 /* DGRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62CD0322B9AA4700FAB999 /* DGRequest.swift */; };
+		BB62CD0C22B9AA4700FAB999 /* DGHttpMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62CD0622B9AA4700FAB999 /* DGHttpMethods.swift */; };
+		BB62CD0D22B9AA4700FAB999 /* DGUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62CD0722B9AA4700FAB999 /* DGUtilities.swift */; };
+		BB62CD0E22B9AA4700FAB999 /* DGReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62CD0922B9AA4700FAB999 /* DGReachability.swift */; };
+		BB9031A722B9AD8800DB51A1 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9031A622B9AD8800DB51A1 /* String+Extensions.swift */; };
+		BB9031A922B9B01B00DB51A1 /* MarverServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9031A822B9B01B00DB51A1 /* MarverServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +117,13 @@
 		BB62CCF522B9877100FAB999 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		BB62CCF722B9962B00FAB999 /* Marvel-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marvel-Regular.ttf"; sourceTree = "<group>"; };
 		BB62CCFA22B9A22B00FAB999 /* MarvelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCell.swift; sourceTree = "<group>"; };
+		BB62CD0222B9AA4700FAB999 /* DGSubmit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGSubmit.swift; sourceTree = "<group>"; };
+		BB62CD0322B9AA4700FAB999 /* DGRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGRequest.swift; sourceTree = "<group>"; };
+		BB62CD0622B9AA4700FAB999 /* DGHttpMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGHttpMethods.swift; sourceTree = "<group>"; };
+		BB62CD0722B9AA4700FAB999 /* DGUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGUtilities.swift; sourceTree = "<group>"; };
+		BB62CD0922B9AA4700FAB999 /* DGReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGReachability.swift; sourceTree = "<group>"; };
+		BB9031A622B9AD8800DB51A1 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		BB9031A822B9B01B00DB51A1 /* MarverServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarverServices.swift; sourceTree = "<group>"; };
 		EBC2F195CA2C765A8CECD107 /* Pods-HelloHero.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloHero.release.xcconfig"; path = "Pods/Target Support Files/Pods-HelloHero/Pods-HelloHero.release.xcconfig"; sourceTree = "<group>"; };
 		F9EAB97941202FEBFE5E062B /* Pods_HelloHero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloHero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD2466B93E1EE3C3399CCBFA /* Pods_HelloHeroUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloHeroUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +205,7 @@
 		BB236F7022B89B55000C92BF /* HelloHero */ = {
 			isa = PBXGroup;
 			children = (
+				BB62CD0022B9AA4700FAB999 /* Network */,
 				BB62CCF422B9875400FAB999 /* ModelView */,
 				BB236FC422B92576000C92BF /* Extensions */,
 				BB236FBF22B8C391000C92BF /* ReadJson.swift */,
@@ -305,6 +320,7 @@
 		BB62CCF422B9875400FAB999 /* ModelView */ = {
 			isa = PBXGroup;
 			children = (
+				BB9031AA22B9B48100DB51A1 /* Service */,
 				BB62CCF522B9877100FAB999 /* Random.swift */,
 			);
 			path = ModelView;
@@ -316,6 +332,59 @@
 				BB62CCFA22B9A22B00FAB999 /* MarvelCell.swift */,
 			);
 			path = MarvelCell;
+			sourceTree = "<group>";
+		};
+		BB62CD0022B9AA4700FAB999 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BB62CD0122B9AA4700FAB999 /* Layers */,
+				BB62CD0422B9AA4700FAB999 /* Extensions */,
+				BB62CD0522B9AA4700FAB999 /* NetworkUtilities */,
+				BB62CD0822B9AA4700FAB999 /* Reachability */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BB62CD0122B9AA4700FAB999 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				BB62CD0222B9AA4700FAB999 /* DGSubmit.swift */,
+				BB62CD0322B9AA4700FAB999 /* DGRequest.swift */,
+			);
+			path = Layers;
+			sourceTree = "<group>";
+		};
+		BB62CD0422B9AA4700FAB999 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BB9031A622B9AD8800DB51A1 /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BB62CD0522B9AA4700FAB999 /* NetworkUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				BB62CD0622B9AA4700FAB999 /* DGHttpMethods.swift */,
+				BB62CD0722B9AA4700FAB999 /* DGUtilities.swift */,
+			);
+			path = NetworkUtilities;
+			sourceTree = "<group>";
+		};
+		BB62CD0822B9AA4700FAB999 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				BB62CD0922B9AA4700FAB999 /* DGReachability.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		BB9031AA22B9B48100DB51A1 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				BB9031A822B9B01B00DB51A1 /* MarverServices.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,10 +526,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HelloHero/Pods-HelloHero-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,15 +600,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB62CD0B22B9AA4700FAB999 /* DGRequest.swift in Sources */,
 				BB236FBB22B8B766000C92BF /* MarvelURL.swift in Sources */,
 				BB62CCEC22B974BA00FAB999 /* MarvelDetail_EventsItemCell.swift in Sources */,
 				BB236F7422B89B55000C92BF /* HomeController.swift in Sources */,
 				BB236FC622B92588000C92BF /* UIColor+Marvel.swift in Sources */,
+				BB62CD0C22B9AA4700FAB999 /* DGHttpMethods.swift in Sources */,
 				BB62CCDD22B94EDD00FAB999 /* MarvelDetailController.swift in Sources */,
+				BB9031A922B9B01B00DB51A1 /* MarverServices.swift in Sources */,
 				BB236FB522B8B4D2000C92BF /* MarvelStorieItem.swift in Sources */,
 				BB236FA722B8A80C000C92BF /* MarvelComic.swift in Sources */,
+				BB62CD0A22B9AA4700FAB999 /* DGSubmit.swift in Sources */,
 				BB236FAF22B8B349000C92BF /* MarvelSerie.swift in Sources */,
 				BB62CCF322B97D8900FAB999 /* MarvelDetail_Thumbnail_Cell.swift in Sources */,
+				BB9031A722B9AD8800DB51A1 /* String+Extensions.swift in Sources */,
+				BB62CD0E22B9AA4700FAB999 /* DGReachability.swift in Sources */,
 				BB236FB722B8B5E2000C92BF /* MarvelEvent.swift in Sources */,
 				BB236FB922B8B5EC000C92BF /* MarvelEventItem.swift in Sources */,
 				BB236FB322B8B4BB000C92BF /* MarvelStorie.swift in Sources */,
@@ -545,6 +622,7 @@
 				BB236FC022B8C391000C92BF /* ReadJson.swift in Sources */,
 				BB236FB122B8B362000C92BF /* MarvelSerieItem.swift in Sources */,
 				BB236F7222B89B55000C92BF /* AppDelegate.swift in Sources */,
+				BB62CD0D22B9AA4700FAB999 /* DGUtilities.swift in Sources */,
 				BB236FC222B8C3B4000C92BF /* MarvelCharacterService.swift in Sources */,
 				BB62CCE622B95C9200FAB999 /* MarvelEnums.swift in Sources */,
 				BB62CCEA22B9722300FAB999 /* MarvelDetail_StoriesItemCell.swift in Sources */,

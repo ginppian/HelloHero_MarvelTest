@@ -42,13 +42,6 @@ extension HomeController: UITableViewDelegate {
     }
 }
 extension HomeController {
-    func setupUI() {
-        setupView() // HomeViewController
-        setupTableView() // TableView
-    }
-    func setupView() {
-        self.view.backgroundColor = .white
-    }
     func setupTableView() {
         constrainTableView()
         
@@ -57,6 +50,9 @@ extension HomeController {
         //self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: 0.01))
         //self.tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0);
 
+        //self.tableView.contentInsetAdjustmentBehavior = .never
+
+        
         self.tableView.register(MarvelCell.self, forCellReuseIdentifier: MarvelCell.identifier)
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -87,47 +83,90 @@ class HomeController: UIViewController {
     }()
     
     var activity: UIActivityIndicatorView = {
-        let ai = UIActivityIndicatorView(style: .gray)
+        let ai = UIActivityIndicatorView(style: .whiteLarge)
+        ai.translatesAutoresizingMaskIntoConstraints = false
+        ai.backgroundColor = .orange
         return ai
     }()
 
+    func setupActivity() {
+        constrainActivity()
+    }
+    func constrainActivity() {
+        self.view.addSubview(self.activity)
+        self.activity.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.activity.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+    }
     
+    var offset = Int(0)
+    var limit = Int(50)
+    
+    func setupNavigationBar() {
+        
+        self.view.backgroundColor = UIColor.gray
+
+        self.navigationController?.navigationBar.barTintColor = UIColor.red
+        //self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let navigationFont = UIFont(name: "Marvel-Regular", size: 28)
+        let navigationLargeFont = UIFont(name: "Marvel-Regular", size: 89) //34 is Large Title size by default
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: navigationFont!]
+        if #available(iOS 11, *){
+            self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: navigationLargeFont!]
+        }
+        self.title = "MARVEL"
+    }
+//    private func configureNavigator() {
+//        guard let navigationController = navigationController else { return }
+//        navigationController.navigationBar.prefersLargeTitles = true
+//        navigationItem.largeTitleDisplayMode = .automatic
+//        navigationController.navigationBar.sizeToFit()
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .white
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        setupNavigationBar()
+        setupActivity()
 
-        let serviceMarvel = ReadJson.from(file: "characters")
-        self.config = serviceMarvel.Data
-
-        self.setupUI()
+        dataServiceCharacters()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.barTintColor = UIColor.red
         
-//        let attributes: [NSAttributedString.Key: Any] = [
-//            NSAttributedString.Key.font = UIFont(name: "Marvel-Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
-//        ]
-//        self.navigationController?.navigationBar.titleTextAttributes = attributes
-//
-//        self.title = "MARVEL"
-        
-        
-        let navigationFont = UIFont(name: "Marvel-Regular", size: 34)
-        let navigationLargeFont = UIFont(name: "Marvel-Regular", size: 89) //34 is Large Title size by default
-        
-        //navigation.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: navigationFont!]
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: navigationFont!]
-
-        if #available(iOS 11, *){
-            self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: navigationLargeFont!]
+    }
+    
+    func dataServiceCharacters() {
+        DispatchQueue.global(qos: .background).async {
+            MarvelServices.characterList(self.offset, self.limit, completion: { (myData) in
+                if let data = myData {
+                    DispatchQueue.main.async {
+                        self.activity.isHidden = true
+                        self.activity.stopAnimating()
+                        print(data)
+                        self.config = data
+                        //self.tableView.reloadData()
+                        self.setupTableView()
+                        
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.activity.isHidden = true
+                        self.activity.stopAnimating()
+                        print("error")
+                    }
+                }
+            })
+            DispatchQueue.main.async {
+                self.activity.isHidden = false
+                self.activity.startAnimating()
+            }
         }
-        self.title = "MARVEL"
     }
 
 }

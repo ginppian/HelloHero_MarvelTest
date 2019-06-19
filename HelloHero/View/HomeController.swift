@@ -9,6 +9,36 @@
 import UIKit
 import SDWebImage
 
+extension HomeController: UITableViewDataSourcePrefetching {
+    public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        
+        if self.config.ArrResults.count > 1000 {
+            // Omitir...
+        } else {
+
+            self.offset += 10
+            //self.limit = 10
+            MarvelServices.characterList(self.offset, self.limit, completion: { (myData) in
+                if let data = myData {
+                    
+                    print(data.ArrResults)
+                    self.config.ArrResults += data.ArrResults
+                    print(self.config.ArrResults.count)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+
+                } else {
+                    print("error")
+                    self.offset -= 10
+                }
+            })
+        }
+
+
+    }
+}
+
 extension HomeController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.config.ArrResults.count
@@ -55,6 +85,7 @@ extension HomeController {
         self.tableView.register(MarvelCell.self, forCellReuseIdentifier: MarvelCell.identifier)
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.prefetchDataSource = self
     }
     func constrainTableView() {
         self.view.addSubview(self.tableView)
@@ -76,7 +107,9 @@ extension HomeController {
 class HomeController: UIViewController {
 
     var config = MarvelCharacterData()
-
+    
+    var bandera = false
+    
     var reloadMarvelCellDelegate: ReloadMarvelCell?
     
     var tableView: UITableView = {
@@ -103,49 +136,6 @@ class HomeController: UIViewController {
         self.view.addSubview(self.activity)
         self.activity.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         self.activity.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-    }
-    
-    var offset = Int(0)
-    var limit = Int(50)
-    
-    func setupNavigationBar() {
-        
-        self.view.backgroundColor = UIColor.gray
-
-        self.navigationController?.navigationBar.barTintColor = UIColor.red
-        //self.navigationController?.navigationBar.prefersLargeTitles = true
-        
-        let navigationFont = UIFont(name: "Marvel-Regular", size: 28)
-        let navigationLargeFont = UIFont(name: "Marvel-Regular", size: 89) //34 is Large Title size by default
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: navigationFont!]
-        if #available(iOS 11, *){
-            self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: navigationLargeFont!]
-        }
-        self.title = "MARVEL"
-    }
-//    private func configureNavigator() {
-//        guard let navigationController = navigationController else { return }
-//        navigationController.navigationBar.prefersLargeTitles = true
-//        navigationItem.largeTitleDisplayMode = .automatic
-//        navigationController.navigationBar.sizeToFit()
-//    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupNavigationBar()
-        setupActivity()
-
-        dataServiceCharacters()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
     }
     
     func dataServiceCharacters() {
@@ -175,6 +165,46 @@ class HomeController: UIViewController {
             }
         }
     }
+    
+    var offset = Int(0)
+    var limit = Int(10)
+    
+    func setupNavigationBar() {
+        
+        self.view.backgroundColor = UIColor.gray
+
+        self.navigationController?.navigationBar.barTintColor = UIColor.red
+        //self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let navigationFont = UIFont(name: "Marvel-Regular", size: 28)
+        let navigationLargeFont = UIFont(name: "Marvel-Regular", size: 89) //34 is Large Title size by default
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: navigationFont!]
+        if #available(iOS 11, *){
+            self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: navigationLargeFont!]
+        }
+        self.title = "MARVEL"
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupNavigationBar()
+        setupActivity()
+
+        dataServiceCharacters()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
+
 
 }
 

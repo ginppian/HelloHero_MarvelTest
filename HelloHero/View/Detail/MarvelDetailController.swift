@@ -36,6 +36,26 @@ extension MarvelDetailController: UITableViewDataSource {
         }
     }
     
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case MarvelDetailEnum.thumbnail.rawValue:
+            return self.character.Name
+        case MarvelDetailEnum.description.rawValue:
+            return "¿Quién es?"
+        case MarvelDetailEnum.comics.rawValue:
+            return "Comics donde aparece:"
+        case MarvelDetailEnum.series.rawValue:
+            return "Series donde aparece:"
+        case MarvelDetailEnum.stories.rawValue:
+            return "Historias relacionadas:"
+        case MarvelDetailEnum.events.rawValue:
+            return "Eventos relacionados:"
+        case MarvelDetailEnum.readMore.rawValue:
+            return "Leer más..."
+        default:
+            return nil
+        }
+    }
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case MarvelDetailEnum.thumbnail.rawValue:
@@ -154,7 +174,7 @@ extension MarvelDetailController {
     func constrainTableView() {
         self.view.addSubview(self.tableView)
         self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0.0).isActive = true
-        self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0.0).isActive = true
+        self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0.0).isActive = true
         self.tableView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 0.0).isActive = true
         self.tableView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: 0.0).isActive = true
     }
@@ -163,12 +183,12 @@ extension MarvelDetailController {
 public class MarvelDetailController: UIViewController {
     
     var tableView: UITableView = {
-        let t = UITableView(frame: CGRect.zero, style: .grouped)
+        let t = UITableView(frame: CGRect.zero, style: .plain)
         t.translatesAutoresizingMaskIntoConstraints = false
         t.backgroundColor = UIColor.grayMarvel
         t.showsVerticalScrollIndicator = false
         t.showsHorizontalScrollIndicator = false
-        t.bounces = false
+        t.bounces = true
         return t
     }()
     

@@ -11,7 +11,7 @@ import UIKit
 
 extension MarvelDetail_Thumbnail_Cell {
     func loadUI() {
-        setupLbl()
+        //setupLbl()
         setupImgV()
     }
     func setupImgV() {
@@ -53,7 +53,7 @@ protocol MarvelDetail_ThumbnailCell_ReloadDelegate {
 public class MarvelDetail_Thumbnail_Cell: UITableViewCell {
     
     public static let identifier = "MarvelDetail_Thumbnail_Cell"
-    public static let height = CGFloat(144.0)
+    public static let height = CGFloat(377.0)
     
     var thumbnail = MarvelThumbnail()
     var name = String()
@@ -61,6 +61,7 @@ public class MarvelDetail_Thumbnail_Cell: UITableViewCell {
     var imgV: UIImageView = {
         let i = UIImageView()
         i.translatesAutoresizingMaskIntoConstraints = false
+        i.clipsToBounds = true
         i.contentMode = .scaleAspectFill
         return i
     }()

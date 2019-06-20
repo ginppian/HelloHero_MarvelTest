@@ -188,9 +188,17 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Dummie Option
+//        setupNavigationBar()
+//        //setupActivity()
+//        //dataServiceCharacters()
+//        let c = ReadJson.from(file: "characters")
+//        self.config = c.Data
+//        self.setupTableView()
+        
+        //Service Option
         setupNavigationBar()
         setupActivity()
-
         dataServiceCharacters()
     }
     
